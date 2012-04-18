@@ -3,8 +3,31 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+html,
 body {
-  background-color: #f00;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-image: url("/images/bg.png");
+}
+.CodeMirror {
+  width: 700px;
+  height: 100%;
+  margin: 0 auto;
+}
+.CodeMirror-lines {
+  -webkit-transition: opacity 100ms linear;
+  -moz-transition: opacity 100ms linear;
+  -ms-transition: opacity 100ms linear;
+  -o-transition: opacity 100ms linear;
+  transition: opacity 100ms linear;
+}
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-lines {
+  opacity: 0.3;
+}
+.CodeMirror.CodeMirror-focused .CodeMirror-lines {
+  opacity: 1;
 }

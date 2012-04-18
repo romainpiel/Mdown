@@ -3,5 +3,26 @@
 *
 	box-sizing(border-box)
 
+html, body
+	height 100%
+	width 100%
+	padding 0
+	margin 0
+
 body
-	background-color #e5e5e5
+	background-image url('/images/bg.png')
+	
+.CodeMirror
+	width 700px
+	height 100%
+	margin 0 auto
+
+// cool opacity transition
+.CodeMirror-lines
+	transition(opacity 100ms linear)
+	
+.CodeMirror:not(.CodeMirror-focused) .CodeMirror-lines
+	opacity 0.3
+
+.CodeMirror.CodeMirror-focused .CodeMirror-lines
+	opacity 1
