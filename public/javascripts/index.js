@@ -20,8 +20,10 @@ var Index = {
 		});
 		
 		socket.on('display text', function (data) {
-		    editor.setValue(data.content);
-		    stopPropagation = true;
+			if (data.content != editor.getValue()) {
+		    	editor.setValue(data.content);
+		    	stopPropagation = true;
+		    }
 		});
 	
 	}
