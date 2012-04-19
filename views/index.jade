@@ -10,4 +10,7 @@ block content
             lineWrapping: true,
             theme: "default"
         });
-    
+        
+    script
+        var socket = io.connect('http://localhost');
+        socket.on('news',socket.emit('my other event', { my: 'data' }));

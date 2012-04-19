@@ -3,12 +3,13 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
+var routes = require('./routes')
+  , stylus = require('stylus')
+  , express = require('express')
   , http = require('http')
-  , stylus = require('stylus');
-
-var app = express();
+  , io = require('socket.io')
+  , app = express()
+  , server = http.createServer(app);
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -25,6 +26,7 @@ app.configure(function(){
   }));
   
   app.use(express.static(__dirname + '/public'));
+  
 });
 
 app.configure('development', function(){
@@ -33,6 +35,15 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
-http.createServer(app).listen(3000);
+io.listen(server).sockets.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
-console.log("Express server listening on port 3000");
+
+server.listen(8000);
+
+console.log("Express server listening on port 8000");
+
