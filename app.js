@@ -7,7 +7,7 @@ var routes = require('./routes')
   , stylus = require('stylus')
   , express = require('express')
   , http = require('http')
-  , io = require('socket.io')
+  , io = require('./public/javascripts/sockets')
   , app = express()
   , server = http.createServer(app);
 
@@ -35,13 +35,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
-io.listen(server).sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
-
+io.listen(server);
 
 server.listen(8000);
 
