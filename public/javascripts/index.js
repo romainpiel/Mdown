@@ -11,7 +11,10 @@ var Index = {
 		    lineWrapping: true,
 		    theme: "default",
 		    onChange: function(){
-				if(stopPropagation){stopPropagation=false;return;}
+				if(stopPropagation) {
+					stopPropagation=false;
+					return;
+				}
 				socket.emit('store text', { content: editor.getValue() });
 		    }
 		});
