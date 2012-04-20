@@ -3,9 +3,11 @@ var Index = {
 	init: function() {
 	
 		var stopPropagation = false;
-		var socket = io.connect('http://localhost');
+		var socket = io.connect('http://mdown.romainpiel.c9.io');
 		
-		var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+        var doc = document;
+        var textarea = doc.body.appendChild(doc.createElement('textarea'));
+		var editor = CodeMirror.fromTextArea(textarea, {
 		    mode: 'markdown',
 		    matchBrackets: true,
 		    lineWrapping: true,
